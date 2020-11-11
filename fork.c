@@ -8,7 +8,7 @@ int main()
 {
 	system("ps -f");
 	printf("\n\n\n\n");
-	fork();
+	fork();                     /*duplication_system_process*/
 	system("ps -f");
 
 	return(0);
