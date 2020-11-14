@@ -1,6 +1,21 @@
 
 #include "shell.h"
 
+int _getline(void)
+{
+	
+	char* buff = NULL;
+	size_t len = 0;
+	printf("$ ");
+	
+while (getline(&buff, &len, stdin) != -1)
+	{
+		printf("%s\n", buff);
+		printf("$ ");
+	}
+}
+
+
 char **_parse(char *str)
 {
 	int bufsize = BUFSIZE, i;
@@ -35,13 +50,17 @@ char **_parse(char *str)
 	return tab;
 }
 
-int main(int argc, char *argv[])
+int main(int ac, char **av)
 {
-	char **stream;
+	char *stream;
+	stream = _getline();
+	av = _parse(stream);
+	printf("%s", av);
+	
+/*	char **stream;
 	int i = 0;
-	(void)argc;
 
-	stream = _parse(argv[i]);
+	stream = _parse(av[1]);
 	while (stream[i] != NULL)
 	{
 		printf("%s\n", stream[i]);
@@ -50,6 +69,9 @@ int main(int argc, char *argv[])
 	}
 	free(stream);
 	return (0);
+
+*/
+	
 }
 
 
