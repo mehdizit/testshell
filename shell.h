@@ -10,8 +10,8 @@ int read_parse_line(char* args[], char line[]);
 int process_line(char* args[], char line[]);
 void read_line(char line[]);
 void remove_endofline(char line[]);
-#define MAX_WORD 10
-#define MAX_CHAR 100
+#define MAX_WORD 20
+#define MAX_CHAR 120
 #define DEL " "
 
 #endif
