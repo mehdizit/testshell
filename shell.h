@@ -6,6 +6,8 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#define BUFSIZE 64
+#define DELIM " "
 int read_parse_line(char* args[], char line[]);
 int process_line(char* args[], char line[]);
 void read_line(char line[]);
