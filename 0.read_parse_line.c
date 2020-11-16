@@ -1,3 +1,6 @@
+#include "shell.h"
+
+
 int read_parse_line(char* args[], char line[])
 {
         read_line(line);
