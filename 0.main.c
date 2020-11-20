@@ -11,24 +11,24 @@
  *@argv: char
  *Return: Always 0.
  */
-int main(int args, char *argv[])
+int main(int argc, char **argv, char **env)
 {
-	char line[MAX_CHAR];
-	int status;
+	char *line = NULL;
+	size_t status = 0;
 
-	argv[MAX_WORD];
-	while (read_parse_line(argv, line))
+
+	while (1)
 	{
-		pid_t child_pid = fork();
-
-		if (child_pid == 0)
+		printf("$ ");
+		if (getline(&line, &status, stdin) == -1)
 		{
-			_execve();
-		}
-		else
-		{
-			waitpid(child_pid, &status, 0);
+			write(STDIN_FILENO, "\n", 1);
+			return (1);
+			free(line);
+			break;
 		}
 	}
-	return (0);
 }
+		
+		
+
