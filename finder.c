@@ -1,6 +1,6 @@
 #include "shell.h"
 
-char *var_finder(char *var, char **env)
+char *search_var(char *var, char **env)
 {
 	int i = 0, ii = 0;
 
