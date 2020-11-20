@@ -15,6 +15,7 @@ int main(int argc, char **argv, char **env)
 {
 	char *line = NULL;
 	size_t status = 0;
+	char ** tokens;
 
 
 	while (1)
@@ -26,6 +27,12 @@ int main(int argc, char **argv, char **env)
 			return (1);
 			free(line);
 			break;
+		}
+		if (line != NULL)
+		{
+			tokens = split_line(line, "\n");
+			printf ("%s", *tokens);
+			free(line);
 		}
 	}
 }
