@@ -13,9 +13,13 @@
  */
 int main(int argc, char **argv, char **env)
 {
+	
 	char *line = NULL;
 	size_t status = 0;
 	char ** tokens;
+	char **array;
+	char **ch = split_line(search_var("PATH", env), ":=");
+	char **ch2 = ch + 1;
 
 
 	while (1)
@@ -31,9 +35,11 @@ int main(int argc, char **argv, char **env)
 		if (line != NULL)
 		{
 			tokens = split_line(line, "\n");
-			printf ("%s", *tokens);
 			free(line);
 		}
+		if _built((array, ch2))
+			break;
+		/*	free_array(array);*/
 	}
 }
 		
