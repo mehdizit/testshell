@@ -1,7 +1,7 @@
 #include "shell.h"
 
 
-int _execute(char **av)
+int execute(char **str)
 {
 	pid_t child_pid;
 
@@ -11,7 +11,7 @@ int _execute(char **av)
 
 	if (child_pid == 0)
 	{
-		if (execve(av[0], av, NULL) == -1)
+		if (execve(str[0], str, NULL) == -1)
 			exit(1);
 	}
 	else
@@ -22,4 +22,3 @@ int _execute(char **av)
 
 	return (0);
 }
-
