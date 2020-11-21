@@ -22,7 +22,7 @@ int main(int __attribute__((unused)) argc, char **argv, char **env)
 	char *line, **tokens;
 	 str = search_var("PATH", env);
 	 ch  = split_string(str,":=");
-/*	char** ch2 = ch + 1;*/
+	char** ch2 = ch + 1;
 	while (1)
 	{
 		status = 0;
@@ -51,7 +51,7 @@ int main(int __attribute__((unused)) argc, char **argv, char **env)
 			tokens = split_string(line, "\n ");
 			free(line);
 		}
-			if (_built(tokens, env))
+		if (_built(tokens, argv, env, ch2, i,0))
 			break;
 			free_array(tokens);
 	}
