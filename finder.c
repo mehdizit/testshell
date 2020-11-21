@@ -1,20 +1,24 @@
 #include "shell.h"
 
-char *search_var(char *var, char **env)
+
+
+
+char *search_var(char *str, char **env)
 {
-	int i = 0, ii = 0;
+	int i, j;
 
-	if (!(var) || !(env))
+	if ((str == NULL) || (env) == NULL)
 		return (NULL);
-
-	while (env[ii] != NULL)
+	
+	for (j = 0; env[j] != NULL; j++)
 	{
 		i = 0;
-		while (var[i] != '\0' && var[i] == env[ii][i])
+	
+		while (str[i] != '\0' && str[i] == env[j][i])
 			i++;
-		if (var[i] == '\0')
-			return (env[ii]);
-		ii++;
+		if (str[i] == '\0')
+			return (env[j]);
+		
 	}
 	return (NULL);
 }
