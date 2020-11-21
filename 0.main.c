@@ -51,7 +51,7 @@ int main(int __attribute__((unused)) argc, char **argv, char **env)
 			tokens = split_string(line, "\n ");
 			free(line);
 		}
-		if (_built(tokens, argv, env, ch2, i,0))
+		if (_built(tokens, argv, env, ch2, i))
 			break;
 			free_array(tokens);
 	}
