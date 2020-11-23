@@ -1,5 +1,9 @@
 #include "shell.h"
-
+/**
+ *execute - generate child process and wait to execute with execve
+ *@str: array of sting
+ *Return: Always 0.
+ */
 
 int execute(char **str)
 {
