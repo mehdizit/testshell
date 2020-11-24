@@ -16,7 +16,7 @@ int main(int __attribute__((unused)) argc, char **argv, char **env)
 	 ch  = split_string(str, ":=");
 	 char **ch2 = ch + 1;
 
-	 while (TRUE)
+	 while (1)
 	 {
 		 line = NULL; tokens = NULL; i++; _putchar('$'); _putchar(' ');
 		if (getline(&line, &status, stdin) == -1)
