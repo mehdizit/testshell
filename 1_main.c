@@ -18,32 +18,37 @@ int main(int __attribute__((unused)) argc, char **argv, char **env)
 
 	 while (TRUE)
 	 {
-		 line = NULL; tokens = NULL; i++; _putchar('$'); _putchar(' ');
-		if (getline(&line, &status, stdin) == -1)
+		prompt(STDIN_FILENO, buf);
+		line = _getline(stdin);
+		if (_strcmp(line, "\n", 1) == 0)
 		{
-			write(STDIN_FILENO, "\n", 1);
-			return (1);
 			free(line);
-			break;
+			continue;
 		}
-		if (line != NULL)
+		tokens = tokenizer(line);
+		if (tokens[0] == NULL)
+			continue;
+		builtin_status = builtin_execute(tokens);
+		if (builtin_status == 0 || builtin_status == -1)
 		{
-			if (line[0] == '\n')
-			{
-				free(line);
-				line = NULL;
-			}
-		}
-		if (line != NULL)
-		{
-			tokens = split_string(line, "\n ");
+			free(tokens);
 			free(line);
 		}
-		if (_built(tokens, argv, env, ch2, i))
-			break;
-			free_array(tokens);
+		if (builtin_status == 0)
+			continue;
+		if (builtin_status == -1)
+			_exit(EXIT_SUCCESS);
+		flag = 0; /* 0 if full_path is not malloc'd */
+		path = _getenv("PATH");
+		fullpath = _which(tokens[0], fullpath, path);
+		if (fullpath == NULL)
+			fullpath = tokens[0];
+		else
+			flag = 1; /* if fullpath was malloc'd, flag to free */
+		child_status = child(fullpath, tokens);
+		if (child_status == -1)
+			errors(2);
+		free_all(tokens, path, line, fullpath, flag);
 	}
-	free_array(ch);
-	free_array(tokens);
 	return (0);
 }
